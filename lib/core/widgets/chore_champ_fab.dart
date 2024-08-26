@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../feature/chore/bloc/chore_bloc.dart';
+import '../../features/chore/presentation/bloc/chore_bloc.dart';
 
 class ChoreChampFAB extends StatelessWidget {
   const ChoreChampFAB(

@@ -1,10 +1,10 @@
-import 'package:chorechamp/core/route/chore_champ_router.dart';
-import 'package:chorechamp/feature/splash/bloc/splash_bloc.dart';
-import 'package:chorechamp/feature/splash/splash_screen.dart';
+import 'package:chorechamp/core/utils/chore_champ_router.dart';
+import 'package:chorechamp/features/splash/presentation/bloc/splash_bloc.dart';
+import 'package:chorechamp/features/splash/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'feature/chore/bloc/chore_bloc.dart';
+import 'features/chore/presentation/bloc/chore_bloc.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,15 +1,15 @@
-import 'package:chorechamp/core/route/route_constants.dart';
+import 'package:chorechamp/core/constants/route_constants.dart';
 import 'package:chorechamp/core/widgets/chore_champ_loading_widget.dart';
 import 'package:chorechamp/core/widgets/chore_champ_fab.dart';
-import 'package:chorechamp/feature/chore/bloc/chore_bloc.dart';
-import 'package:chorechamp/feature/chore/constants/constants.dart';
-import 'package:chorechamp/feature/chore/model/chore_model.dart';
-import 'package:chorechamp/feature/chore/screens/chores_history_screen.dart';
-import 'package:chorechamp/feature/chore/widgets/recent_chores_list_widget.dart';
+import 'package:chorechamp/features/chore/presentation/bloc/chore_bloc.dart';
+import 'package:chorechamp/features/chore/constants/constants.dart';
+import 'package:chorechamp/features/chore/domain/entities/chore_model.dart';
+import 'package:chorechamp/features/chore/presentation/screens/chores_history_screen.dart';
+import 'package:chorechamp/features/chore/presentation/widgets/recent_chores_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/enums.dart';
+import '../../../../core/enums/enums.dart';
 import '../widgets/user_header_widget.dart';
 
 class ChoresScreen extends StatefulWidget {

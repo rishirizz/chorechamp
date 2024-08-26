@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:chorechamp/core/enums.dart';
+import 'package:chorechamp/core/enums/enums.dart';
 import 'package:equatable/equatable.dart';
 
 part 'splash_event.dart';

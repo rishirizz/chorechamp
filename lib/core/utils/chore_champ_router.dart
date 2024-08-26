@@ -1,6 +1,6 @@
-import 'package:chorechamp/feature/chore/screens/chores_history_screen.dart';
-import 'package:chorechamp/feature/chore/screens/chores_screen.dart';
-import 'package:chorechamp/feature/splash/splash_screen.dart';
+import 'package:chorechamp/features/chore/presentation/screens/chores_history_screen.dart';
+import 'package:chorechamp/features/chore/presentation/screens/chores_screen.dart';
+import 'package:chorechamp/features/splash/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 class ChoreChampRouter {

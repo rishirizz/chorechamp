@@ -1,14 +1,14 @@
-import 'package:chorechamp/core/enums.dart';
+import 'package:chorechamp/core/enums/enums.dart';
 import 'package:chorechamp/core/widgets/chore_champ_loading_widget.dart';
 import 'package:chorechamp/core/widgets/chore_champ_appbar.dart';
 import 'package:chorechamp/core/widgets/chore_champ_fab.dart';
-import 'package:chorechamp/feature/chore/bloc/chore_bloc.dart';
-import 'package:chorechamp/feature/chore/model/chore_model.dart';
+import 'package:chorechamp/features/chore/presentation/bloc/chore_bloc.dart';
+import 'package:chorechamp/features/chore/domain/entities/chore_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/route/route_constants.dart';
-import '../constants/constants.dart';
+import '../../../../core/constants/route_constants.dart';
+import '../../constants/constants.dart';
 
 class ChoresHistoryScreen extends StatelessWidget {
   const ChoresHistoryScreen({super.key});

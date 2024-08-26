@@ -1,8 +1,8 @@
-import 'package:chorechamp/core/enums.dart';
-import 'package:chorechamp/core/route/route_constants.dart';
-import 'package:chorechamp/feature/chore/constants/constants.dart';
-import 'package:chorechamp/feature/chore/screens/chores_screen.dart';
-import 'package:chorechamp/feature/splash/bloc/splash_bloc.dart';
+import 'package:chorechamp/core/enums/enums.dart';
+import 'package:chorechamp/core/constants/route_constants.dart';
+import 'package:chorechamp/features/chore/constants/constants.dart';
+import 'package:chorechamp/features/chore/presentation/screens/chores_screen.dart';
+import 'package:chorechamp/features/splash/presentation/bloc/splash_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

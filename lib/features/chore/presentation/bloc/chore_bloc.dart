@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/rendering.dart';
 
-import '../../../core/enums.dart';
-import '../model/chore_model.dart';
+import '../../../../core/enums/enums.dart';
+import '../../domain/entities/chore_model.dart';
 
 part 'chore_event.dart';
 part 'chore_state.dart';
