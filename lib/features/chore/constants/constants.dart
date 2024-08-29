@@ -3,6 +3,6 @@ class ChoreConstants {
   static String choreChamp = 'Chore Champ';
   static String yourChores = 'Your Chores';
   static String noChoresAddedYet = 'No Chores added yet.';
-
-
+  static String yourRecentChores = 'Your recent Chores.';
+  static String viewAll = 'View All';
 }

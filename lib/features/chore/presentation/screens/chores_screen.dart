@@ -1,9 +1,7 @@
 import 'package:chorechamp/core/constants/route_constants.dart';
 import 'package:chorechamp/core/widgets/chore_champ_loading_widget.dart';
-import 'package:chorechamp/core/widgets/chore_champ_fab.dart';
 import 'package:chorechamp/features/chore/presentation/bloc/chore_bloc.dart';
 import 'package:chorechamp/features/chore/constants/constants.dart';
-import 'package:chorechamp/features/chore/domain/entities/chore_model.dart';
 import 'package:chorechamp/features/chore/presentation/screens/chores_history_screen.dart';
 import 'package:chorechamp/features/chore/presentation/widgets/recent_chores_list_widget.dart';
 import 'package:flutter/material.dart';
@@ -41,9 +39,6 @@ class _ChoresScreenState extends State<ChoresScreen> {
             const SizedBox(
               height: 20,
             ),
-            const SizedBox(
-              height: 10,
-            ),
             BlocBuilder<ChoreBloc, ChoreState>(
               builder: (context, state) {
                 if (state.choreStatus == ChoresStatus.loading) {
@@ -55,21 +50,6 @@ class _ChoresScreenState extends State<ChoresScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(ChoreConstants.noChoresAddedYet),
-                        InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(
-                              context,
-                              ChoresHistoryScreen.routeName,
-                            );
-                          },
-                          child: const Text(
-                            'View All',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                   );
@@ -85,7 +65,9 @@ class _ChoresScreenState extends State<ChoresScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text('Your recent Chores'),
+                            Text(
+                              ChoreConstants.yourRecentChores,
+                            ),
                             InkWell(
                               onTap: () {
                                 Navigator.pushNamed(
@@ -93,9 +75,9 @@ class _ChoresScreenState extends State<ChoresScreen> {
                                   ChoresHistoryScreen.routeName,
                                 );
                               },
-                              child: const Text(
-                                'View All',
-                                style: TextStyle(
+                              child: Text(
+                                ChoreConstants.viewAll,
+                                style: const TextStyle(
                                   fontWeight: FontWeight.w500,
                                   decoration: TextDecoration.underline,
                                 ),
@@ -104,26 +86,9 @@ class _ChoresScreenState extends State<ChoresScreen> {
                           ],
                         ),
                       ),
-                      NotificationListener<UserScrollNotification>(
-                        onNotification: (notification) {
-                          context.read<ChoreBloc>().add(
-                                OnScroll(
-                                  scrollDirection: notification.direction,
-                                ),
-                              );
-                          return true;
-                        },
-                        child: RefreshIndicator.adaptive(
-                          onRefresh: () async {
-                            context.read<ChoreBloc>().add(
-                                  FetchChores(),
-                                );
-                          },
-                          child: const SizedBox(
-                            height: 150,
-                            child: RecentChoresList(),
-                          ),
-                        ),
+                      const SizedBox(
+                        height: 150,
+                        child: RecentChoresList(),
                       ),
                     ],
                   );

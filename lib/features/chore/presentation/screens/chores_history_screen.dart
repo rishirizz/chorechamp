@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/constants/route_constants.dart';
+import '../../../../core/widgets/chore_champ_pull_to_refresh.dart';
 import '../../constants/constants.dart';
 
 class ChoresHistoryScreen extends StatelessWidget {
@@ -42,33 +43,40 @@ class ChoresHistoryScreen extends StatelessWidget {
             if (state.choreStatus == ChoresStatus.loading) {
               return const ChoreChampLoadingWidget();
             } else if (state.choreStatus == ChoresStatus.success) {
-              return NotificationListener<UserScrollNotification>(
-                onNotification: (notification) {
+              return ChoreChampPullToRefresh(
+                onPullToRefresh: () {
                   context.read<ChoreBloc>().add(
-                        OnScroll(
-                          scrollDirection: notification.direction,
+                        FetchChores(),
+                      );
+                },
+                child: NotificationListener<UserScrollNotification>(
+                  onNotification: (notification) {
+                    context.read<ChoreBloc>().add(
+                          OnScroll(
+                            scrollDirection: notification.direction,
+                          ),
+                        );
+                    return true;
+                  },
+                  child: ListView.builder(
+                    itemCount: state.chores.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(state.chores[index].id),
+                              Text(state.chores[index].title),
+                              Text(state.chores[index].description),
+                              Text(state.chores[index].dateTime.toString()),
+                            ],
+                          ),
                         ),
                       );
-                  return true;
-                },
-                child: ListView.builder(
-                  itemCount: state.chores.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(state.chores[index].id),
-                            Text(state.chores[index].title),
-                            Text(state.chores[index].description),
-                            Text(state.chores[index].dateTime.toString()),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
+                    },
+                  ),
                 ),
               );
             } else {

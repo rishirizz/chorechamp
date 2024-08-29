@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:chorechamp/core/constants/app_constants.dart';
 import 'package:chorechamp/core/enums/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,10 +20,12 @@ class UserHeaderWidget extends StatelessWidget {
           BlocListener<ImageUploadBloc, ImageUploadState>(
             listener: (context, state) {
               if (state.imageUploadStatus == ImageUploadStatus.success) {
-                SnackBar snackBar = const SnackBar(
+                SnackBar snackBar = SnackBar(
                   backgroundColor: Colors.green,
                   behavior: SnackBarBehavior.floating,
-                  content: Text('Image Uploaded successfully.'),
+                  content: Text(
+                    ChoreChampAppConstants.imageUploadedSuccessfully,
+                  ),
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               }
