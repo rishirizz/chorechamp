@@ -1,3 +1,6 @@
+import 'package:chorechamp/core/core_features/app_info/app_info.dart';
+import 'package:chorechamp/core/core_features/app_info/bloc/app_info_bloc.dart';
+import 'package:chorechamp/core/core_features/upload_image/bloc/image_upload_bloc.dart';
 import 'package:chorechamp/core/utils/chore_champ_router.dart';
 import 'package:chorechamp/features/splash/presentation/bloc/splash_bloc.dart';
 import 'package:chorechamp/features/splash/presentation/screens/splash_screen.dart';
@@ -6,7 +9,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'features/chore/presentation/bloc/chore_bloc.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -17,6 +21,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => AppInfoBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ImageUploadBloc(),
+        ),
         BlocProvider(
           create: (context) => SplashBloc(),
         ),

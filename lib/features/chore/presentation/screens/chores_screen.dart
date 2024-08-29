@@ -50,8 +50,28 @@ class _ChoresScreenState extends State<ChoresScreen> {
                   return const ChoreChampLoadingWidget();
                 } else if (state.chores.isEmpty) {
                   return Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Text(ChoreConstants.noChoresAddedYet),
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(ChoreConstants.noChoresAddedYet),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              ChoresHistoryScreen.routeName,
+                            );
+                          },
+                          child: const Text(
+                            'View All',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   );
                 } else {
                   return Column(
@@ -80,7 +100,7 @@ class _ChoresScreenState extends State<ChoresScreen> {
                                   decoration: TextDecoration.underline,
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
