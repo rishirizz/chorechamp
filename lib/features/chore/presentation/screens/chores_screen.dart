@@ -3,7 +3,8 @@ import 'package:chorechamp/core/widgets/chore_champ_loading_widget.dart';
 import 'package:chorechamp/features/chore/presentation/bloc/chore_bloc.dart';
 import 'package:chorechamp/features/chore/constants/constants.dart';
 import 'package:chorechamp/features/chore/presentation/screens/chores_history_screen.dart';
-import 'package:chorechamp/features/chore/presentation/widgets/recent_chores_list_widget.dart';
+import 'package:chorechamp/features/chore/presentation/widgets/recent_chores_list.dart';
+import 'package:chorechamp/features/chore/presentation/widgets/recent_chores_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -39,62 +40,87 @@ class _ChoresScreenState extends State<ChoresScreen> {
             const SizedBox(
               height: 20,
             ),
-            BlocBuilder<ChoreBloc, ChoreState>(
-              builder: (context, state) {
-                if (state.choreStatus == ChoresStatus.loading) {
-                  return const ChoreChampLoadingWidget();
-                } else if (state.chores.isEmpty) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(ChoreConstants.noChoresAddedYet),
-                      ],
+            const RecentChoresView(),
+            const SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10.0,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  const Expanded(
+                    child: SizedBox(
+                      child: Text('data'),
                     ),
-                  );
-                } else {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0)
-                            .copyWith(
-                          bottom: 10.0,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              ChoreConstants.yourRecentChores,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  ChoresHistoryScreen.routeName,
-                                );
-                              },
-                              child: Text(
-                                ChoreConstants.viewAll,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  decoration: TextDecoration.underline,
-                                ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          width: double.infinity,
+                          child: Card(
+                            color: Colors.purple.shade100,
+                            child: const Padding(
+                              padding: EdgeInsets.all(20.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Icon(Icons.list),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                  Text('To do List'),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                ],
                               ),
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 150,
-                        child: RecentChoresList(),
-                      ),
-                    ],
-                  );
-                }
-              },
-            ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        SizedBox(
+                          width: double.infinity,
+                          child: Card(
+                            color: Colors.indigo.shade100,
+                            child: const Padding(
+                              padding: EdgeInsets.all(20.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Icon(Icons.list),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                  Text('In Progress'),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),

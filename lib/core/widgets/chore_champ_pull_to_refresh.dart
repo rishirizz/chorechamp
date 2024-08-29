@@ -11,8 +11,10 @@ class ChoreChampPullToRefresh extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      onRefresh: () async {},
+    return RefreshIndicator.adaptive(
+      onRefresh: () async {
+        onPullToRefresh();
+      },
       child: child,
     );
   }

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:chorechamp/core/constants/app_constants.dart';
 import 'package:chorechamp/core/enums/enums.dart';
+import 'package:chorechamp/features/chore/presentation/screens/chores_history_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -77,9 +78,17 @@ class UserHeaderWidget extends StatelessWidget {
               ),
             ),
           ),
-          const Icon(
-            Icons.person,
-            size: 30,
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                ChoresHistoryScreen.routeName,
+              );
+            },
+            child: const Icon(
+              Icons.person,
+              size: 30,
+            ),
           ),
           const SizedBox(
             width: 10,
