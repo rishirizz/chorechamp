@@ -5,4 +5,5 @@ class ChoreConstants {
   static String noChoresAddedYet = 'No Chores added yet.';
   static String yourRecentChores = 'Your recent Chores.';
   static String viewAll = 'View All';
+  static String choreAdded = 'Chore added successfully.';
 }

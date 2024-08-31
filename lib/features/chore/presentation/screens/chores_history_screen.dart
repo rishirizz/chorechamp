@@ -38,51 +38,68 @@ class ChoresHistoryScreen extends StatelessWidget {
         },
       ),
       body: SafeArea(
-        child: BlocBuilder<ChoreBloc, ChoreState>(
-          builder: (context, state) {
-            if (state.choreStatus == ChoresStatus.loading) {
-              return const ChoreChampLoadingWidget();
-            } else if (state.choreStatus == ChoresStatus.success) {
-              return ChoreChampPullToRefresh(
-                onPullToRefresh: () {
-                  context.read<ChoreBloc>().add(
-                        FetchChores(),
-                      );
-                },
-                child: NotificationListener<UserScrollNotification>(
-                  onNotification: (notification) {
-                    context.read<ChoreBloc>().add(
-                          OnScroll(
-                            scrollDirection: notification.direction,
-                          ),
-                        );
-                    return true;
-                  },
-                  child: ListView.builder(
-                    itemCount: state.chores.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(state.chores[index].id),
-                              Text(state.chores[index].title),
-                              Text(state.chores[index].description),
-                              Text(state.chores[index].dateTime.toString()),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  ),
+        child: BlocListener<ChoreBloc, ChoreState>(
+          listener: (context, state) {
+            if (state.isChoreAdded == true) {
+              SnackBar snackBar = SnackBar(
+                duration: const Duration(
+                  seconds: 1,
+                ),
+                backgroundColor: Colors.green,
+                behavior: SnackBarBehavior.floating,
+                content: Text(
+                  ChoreConstants.choreAdded,
                 ),
               );
-            } else {
-              return const SizedBox();
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
             }
           },
+          child: BlocBuilder<ChoreBloc, ChoreState>(
+            builder: (context, state) {
+              if (state.choreStatus == ChoresStatus.loading) {
+                return const ChoreChampLoadingWidget();
+              } else if (state.choreStatus == ChoresStatus.success) {
+                return ChoreChampPullToRefresh(
+                  onPullToRefresh: () {
+                    context.read<ChoreBloc>().add(
+                          FetchChores(),
+                        );
+                  },
+                  child: NotificationListener<UserScrollNotification>(
+                    onNotification: (notification) {
+                      context.read<ChoreBloc>().add(
+                            OnScroll(
+                              scrollDirection: notification.direction,
+                            ),
+                          );
+                      return true;
+                    },
+                    child: ListView.builder(
+                      itemCount: state.chores.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(state.chores[index].id),
+                                Text(state.chores[index].title),
+                                Text(state.chores[index].description),
+                                Text(state.chores[index].dateTime.toString()),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                );
+              } else {
+                return const SizedBox();
+              }
+            },
+          ),
         ),
       ),
     );

@@ -14,8 +14,8 @@ class LandingConstants {
       label: 'Home',
     ),
     const BottomNavigationBarItem(
-      icon: Icon(Icons.business),
-      label: 'Business',
+      icon: Icon(Icons.history),
+      label: 'History',
     ),
   ];
 }

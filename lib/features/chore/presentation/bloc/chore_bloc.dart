@@ -21,6 +21,7 @@ class ChoreBloc extends Bloc<ChoreEvent, ChoreState> {
     emit(
       state.copyWith(
         choreStatus: ChoresStatus.loading,
+        isChoreAdded: false,
       ),
     );
     await Future.delayed(
@@ -31,6 +32,7 @@ class ChoreBloc extends Bloc<ChoreEvent, ChoreState> {
     emit(
       state.copyWith(
         choreStatus: ChoresStatus.success,
+        scrollDirection: ScrollDirection.idle,
       ),
     );
   }
@@ -38,7 +40,10 @@ class ChoreBloc extends Bloc<ChoreEvent, ChoreState> {
   _addChore(AddChore event, Emitter<ChoreState> emit) async {
     List<Chore> chores = List<Chore>.from(state.chores);
     emit(
-      state.copyWith(choreStatus: ChoresStatus.loading),
+      state.copyWith(
+        choreStatus: ChoresStatus.loading,
+        isChoreAdded: false,
+      ),
     );
     await Future.delayed(
       const Duration(
@@ -49,6 +54,7 @@ class ChoreBloc extends Bloc<ChoreEvent, ChoreState> {
     emit(
       state.copyWith(
         choreStatus: ChoresStatus.success,
+        isChoreAdded: true,
         chores: chores,
       ),
     );
@@ -79,6 +85,7 @@ class ChoreBloc extends Bloc<ChoreEvent, ChoreState> {
     emit(
       state.copyWith(
         scrollDirection: event.scrollDirection,
+        isChoreAdded: false,
       ),
     );
   }
