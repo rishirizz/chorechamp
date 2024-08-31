@@ -14,6 +14,7 @@ class RecentChoresView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ChoreBloc, ChoreState>(
+      buildWhen: (previous, current) => previous.chores != current.chores,
       builder: (context, state) {
         if (state.choreStatus == ChoresStatus.loading) {
           return const ChoreChampLoadingWidget();
