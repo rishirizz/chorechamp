@@ -3,7 +3,7 @@ import 'package:chorechamp/core/widgets/chore_champ_loading_widget.dart';
 import 'package:chorechamp/core/widgets/chore_champ_appbar.dart';
 import 'package:chorechamp/core/widgets/chore_champ_fab.dart';
 import 'package:chorechamp/features/chore/presentation/bloc/chore_bloc.dart';
-import 'package:chorechamp/features/chore/domain/entities/chore_model.dart';
+import 'package:chorechamp/features/chore/domain/entities/chore_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,7 +27,7 @@ class ChoresHistoryScreen extends StatelessWidget {
         onPressed: () {
           context.read<ChoreBloc>().add(
                 AddChore(
-                  chore: Chore(
+                  chore: ChoreEntity(
                     id: DateTime.now().toString(),
                     title: 'Coding Practice',
                     description: 'Try Bubble Sorting',
@@ -83,9 +83,9 @@ class ChoresHistoryScreen extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(state.chores[index].id),
-                                Text(state.chores[index].title),
-                                Text(state.chores[index].description),
+                                Text(state.chores[index].id!),
+                                Text(state.chores[index].title!),
+                                Text(state.chores[index].description!),
                                 Text(state.chores[index].dateTime.toString()),
                               ],
                             ),

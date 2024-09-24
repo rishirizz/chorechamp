@@ -7,7 +7,7 @@ class ChoreState extends Equatable {
     required this.scrollDirection,
     required this.isChoreAdded,
   });
-  final List<Chore> chores;
+  final List<ChoreEntity> chores;
   final ChoresStatus choreStatus;
   final ScrollDirection scrollDirection;
   final bool isChoreAdded;
@@ -22,7 +22,7 @@ class ChoreState extends Equatable {
   }
 
   ChoreState copyWith({
-    List<Chore>? chores,
+    List<ChoreEntity>? chores,
     ChoresStatus? choreStatus,
     ScrollDirection? scrollDirection,
     bool? isChoreAdded,

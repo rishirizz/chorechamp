@@ -1,7 +1,7 @@
 import 'package:chorechamp/core/core_features/app_info/bloc/app_info_bloc.dart';
 import 'package:chorechamp/core/core_features/upload_image/bloc/image_upload_bloc.dart';
 import 'package:chorechamp/core/utils/chore_champ_router.dart';
-import 'package:chorechamp/features/chore/database/chore_db.dart';
+import 'package:chorechamp/features/chore/data/database/chore_db.dart';
 import 'package:chorechamp/features/landing/presentation/bloc/bottom_nav_bloc.dart';
 import 'package:chorechamp/features/splash/presentation/bloc/splash_bloc.dart';
 import 'package:chorechamp/features/splash/presentation/screens/splash_screen.dart';

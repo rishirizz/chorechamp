@@ -12,7 +12,7 @@ class FetchChores extends ChoreEvent {}
 class AddChore extends ChoreEvent {
   const AddChore({required this.chore});
 
-  final Chore chore;
+  final ChoreEntity chore;
 
   @override
   List<Object> get props => [chore];
@@ -21,12 +21,12 @@ class AddChore extends ChoreEvent {
 class UpdateChore extends ChoreEvent {}
 
 class DeleteChore extends ChoreEvent {
-  const DeleteChore({required this.chore});
+  const DeleteChore({required this.id});
 
-  final Chore chore;
+  final String id;
 
   @override
-  List<Object> get props => [chore];
+  List<Object> get props => [id];
 }
 
 class OnScroll extends ChoreEvent {

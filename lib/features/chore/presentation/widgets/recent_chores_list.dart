@@ -24,7 +24,7 @@ class RecentChoresList extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            state.chores[index].title,
+                            state.chores[index].title!,
                             style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -34,7 +34,7 @@ class RecentChoresList extends StatelessWidget {
                             color: Colors.deepPurple,
                           ),
                           Text(
-                            state.chores[index].description,
+                            state.chores[index].description!,
                           ),
                         ],
                       ),

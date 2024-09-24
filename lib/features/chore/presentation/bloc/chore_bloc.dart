@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/rendering.dart';
 
 import '../../../../core/enums/enums.dart';
-import '../../domain/entities/chore_model.dart';
+import '../../domain/entities/chore_entity.dart';
 
 part 'chore_event.dart';
 part 'chore_state.dart';
@@ -38,7 +38,7 @@ class ChoreBloc extends Bloc<ChoreEvent, ChoreState> {
   }
 
   _addChore(AddChore event, Emitter<ChoreState> emit) async {
-    List<Chore> chores = List<Chore>.from(state.chores);
+    List<ChoreEntity> chores = List<ChoreEntity>.from(state.chores);
     emit(
       state.copyWith(
         choreStatus: ChoresStatus.loading,
@@ -63,7 +63,7 @@ class ChoreBloc extends Bloc<ChoreEvent, ChoreState> {
   _updateChore(UpdateChore event, Emitter<ChoreState> emit) {}
 
   _deleteChore(DeleteChore event, Emitter<ChoreState> emit) async {
-    List<Chore> chores = List<Chore>.from(state.chores);
+    List<ChoreEntity> chores = List<ChoreEntity>.from(state.chores);
     emit(
       state.copyWith(choreStatus: ChoresStatus.loading),
     );
