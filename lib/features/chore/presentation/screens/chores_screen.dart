@@ -28,95 +28,97 @@ class _ChoresScreenState extends State<ChoresScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const UserHeaderWidget(),
-            const SizedBox(
-              height: 20,
-            ),
-            const RecentChoresView(),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10.0,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const UserHeaderWidget(),
+              const SizedBox(
+                height: 20,
               ),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  const Expanded(
-                    child: SizedBox(
-                      child: Text('data'),
+              const RecentChoresView(),
+              const SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10.0,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const Expanded(
+                      child: SizedBox(
+                        child: Text('data'),
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          width: double.infinity,
-                          child: Card(
-                            color: Colors.purple.shade100,
-                            child: const Padding(
-                              padding: EdgeInsets.all(20.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Icon(Icons.list),
-                                  SizedBox(
-                                    height: 30,
-                                  ),
-                                  Text('To do List'),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                ],
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            width: double.infinity,
+                            child: Card(
+                              color: Colors.purple.shade100,
+                              child: const Padding(
+                                padding: EdgeInsets.all(20.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Icon(Icons.list),
+                                    SizedBox(
+                                      height: 30,
+                                    ),
+                                    Text('To do List'),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Card(
-                            color: Colors.indigo.shade100,
-                            child: const Padding(
-                              padding: EdgeInsets.all(20.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Icon(Icons.list),
-                                  SizedBox(
-                                    height: 30,
-                                  ),
-                                  Text('In Progress'),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                ],
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Card(
+                              color: Colors.indigo.shade100,
+                              child: const Padding(
+                                padding: EdgeInsets.all(20.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Icon(Icons.list),
+                                    SizedBox(
+                                      height: 30,
+                                    ),
+                                    Text('In Progress'),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            )
-          ],
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
