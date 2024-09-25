@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../../../core/enums/enums.dart';
+
 part 'login_event.dart';
 part 'login_state.dart';
 
@@ -22,17 +24,26 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   _onPasswordChanged(PasswordChanged event, Emitter<LoginState> emit) {
     emit(
       state.copyWith(
-        userName: event.password,
+        password: event.password,
       ),
     );
   }
 
   _onUserNameAndPasswordSubmitted(
-      UserNameAndPasswordSubmitted event, Emitter<LoginState> emit) {
+      UserNameAndPasswordSubmitted event, Emitter<LoginState> emit) async {
+    emit(
+      state.copyWith(
+        loginStatus: LoginStatus.loading,
+      ),
+    );
+    await Future.delayed(
+      const Duration(seconds: 2),
+    );
     emit(
       state.copyWith(
         userName: state.userName,
         password: state.password,
+        loginStatus: LoginStatus.success,
       ),
     );
   }
