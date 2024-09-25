@@ -13,7 +13,7 @@ class ChoreBloc extends Bloc<ChoreEvent, ChoreState> {
     on<FetchChores>(_fetchChores);
     on<AddChore>(_addChore);
     on<UpdateChore>(_updateChore);
-    on<DeleteChore>(_deleteChore);
+    // on<DeleteChore>(_deleteChore);
     on<OnScroll>(_onScroll);
   }
 
@@ -62,24 +62,24 @@ class ChoreBloc extends Bloc<ChoreEvent, ChoreState> {
 
   _updateChore(UpdateChore event, Emitter<ChoreState> emit) {}
 
-  _deleteChore(DeleteChore event, Emitter<ChoreState> emit) async {
-    List<ChoreEntity> chores = List<ChoreEntity>.from(state.chores);
-    emit(
-      state.copyWith(choreStatus: ChoresStatus.loading),
-    );
-    await Future.delayed(
-      const Duration(
-        milliseconds: 500,
-      ),
-    );
-    chores.removeWhere((chore) => chore.id == event.chore.id);
-    emit(
-      state.copyWith(
-        choreStatus: ChoresStatus.success,
-        chores: chores,
-      ),
-    );
-  }
+  // _deleteChore(DeleteChore event, Emitter<ChoreState> emit) async {
+  //   List<ChoreEntity> chores = List<ChoreEntity>.from(state.chores);
+  //   emit(
+  //     state.copyWith(choreStatus: ChoresStatus.loading),
+  //   );
+  //   await Future.delayed(
+  //     const Duration(
+  //       milliseconds: 500,
+  //     ),
+  //   );
+  //   chores.removeWhere((chore) => chore.id == event.chore.id);
+  //   emit(
+  //     state.copyWith(
+  //       choreStatus: ChoresStatus.success,
+  //       chores: chores,
+  //     ),
+  //   );
+  // }
 
   _onScroll(OnScroll event, Emitter<ChoreState> emit) {
     emit(
